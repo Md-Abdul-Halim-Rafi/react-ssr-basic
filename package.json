@@ -24,7 +24,7 @@
   "scripts": {
     "start-dev": "npm run build&&nodemon server/index.js",
     "start": "node server/index.js",
-    "heroku-postbuild": "npm run build",
+    "heroku-postbuild": "npm install&&npm run build",
     "server": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
