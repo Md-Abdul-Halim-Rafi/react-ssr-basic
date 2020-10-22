@@ -1,0 +1,22 @@
+{
+  "hosting": {
+    "site": "react-ssr-mc",
+    "public": "build",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "rewrites": [
+      {
+        "source": "*/server",
+        "function": "ssrApp"
+      }
+    ]
+  },
+  "functions": {
+    "source": ".",
+    "rewrites": [
+      {
+        "source": "./server",
+        "function": "ssrApp"
+      }
+    ]
+  }
+}
