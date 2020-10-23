@@ -11,9 +11,9 @@ import React from "react";
 import ReactDOMServer from "react-dom/server";
 import { StaticRouter } from "react-router-dom";
 
-import App from "../src/App";
+import App from "./src/App";
 // import Home from "../src/Home";
-import UserPage from "../src/UserPage";
+import UserPage from "./src/UserPage";
 // const path = require("path");
 // const fs = require("fs");
 // const serviceAcc = require("../service-acc.json");
@@ -46,8 +46,8 @@ import UserPage from "../src/UserPage";
 const port = process.env.PORT || 3000;
 const app = express();
 
-app.use(express.static(path.resolve(__dirname, "../build")));
-app.use(express.static(path.resolve(__dirname, "../public")));
+app.use(express.static(path.resolve(__dirname, "build")));
+app.use(express.static(path.resolve(__dirname, "public")));
 
 const router = express.Router();
 
