@@ -22,8 +22,8 @@
     "node": "10.x"
   },
   "scripts": {
-    "start-dev": "npm run build&&nodemon index.js",
     "start": "nodemon index.js",
+    "start-dev": "npm run build&&nodemon index.js",
     "server": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
