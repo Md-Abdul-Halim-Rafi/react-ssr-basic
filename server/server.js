@@ -43,11 +43,11 @@ import UserPage from "../src/UserPage";
 //   measurementId: "G-MEJ2JTTJFJ"
 // })
 
-const PORT = 8080;
+const PORT = process.env.PORT || 3000;
 const app = express();
 
-app.use(express.static(path.resolve(__dirname, '../build')))
-app.use(express.static(path.resolve(__dirname, '../public')))
+app.use(express.static(path.resolve(__dirname, "../build")));
+app.use(express.static(path.resolve(__dirname, "../public")));
 
 const router = express.Router();
 
@@ -76,9 +76,8 @@ app.get("/", async function (req, res) {
 });
 
 app.get("/user/:name", async function (req, res) {
-  const response = await fetch('https://jsonplaceholder.typicode.com/todos/1')
-  const api = await response.json()
-
+  const response = await fetch("https://jsonplaceholder.typicode.com/todos/1");
+  const api = await response.json();
 
   fs.readFile(path.resolve("./build/index.html"), "utf8", async (err, data) => {
     if (err) {
@@ -90,17 +89,22 @@ app.get("/user/:name", async function (req, res) {
       data
         .replace(
           '<div id="root"></div>',
-          `<div id="root">${ReactDOMServer.renderToString(<UserPage name={req.params.name} />)}</div>`
-        ).replace(`"{ data: undefined }"`, 
-        `${JSON.stringify({ name: req.params.name, data: {...api} })}`
+          `<div id="root">${ReactDOMServer.renderToString(
+            <UserPage name={req.params.name} />
+          )}</div>`
         )
         .replace(
-          "<title>React App</title>",
-          `<title>${api.title}</title>`
-        ).replace(/\$OG_TITLE/g, api.title)
+          `"{ data: undefined }"`,
+          `${JSON.stringify({ name: req.params.name, data: { ...api } })}`
+        )
+        .replace("<title>React App</title>", `<title>${api.title}</title>`)
+        .replace(/\$OG_TITLE/g, api.title)
         .replace(/\$OG_DESCRIPTION/, api.title)
         .replace(/\$OG_URL/, req.url)
-        .replace(/\$OG_IMAGE/, "https://ahrefs.com/blog/wp-content/uploads/2019/12/fb-how-to-become-an-seo-expert.png")
+        .replace(
+          /\$OG_IMAGE/,
+          "https://ahrefs.com/blog/wp-content/uploads/2019/12/fb-how-to-become-an-seo-expert.png"
+        )
     );
   });
 });
