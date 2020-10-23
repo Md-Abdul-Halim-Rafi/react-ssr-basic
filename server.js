@@ -43,7 +43,7 @@ import UserPage from "../src/UserPage";
 //   measurementId: "G-MEJ2JTTJFJ"
 // })
 
-const PORT = process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 const app = express();
 
 app.use(express.static(path.resolve(__dirname, "../build")));
@@ -113,8 +113,8 @@ app.get("/user/:name", async function (req, res) {
 app.use(router);
 
 // app.use(express.static('./build'))
-app.listen(PORT, () => {
-  console.log(`SSR running on port ${PORT}`);
+app.listen(port, () => {
+  console.log(`SSR running on port ${port}`);
 });
 
 // export let ssrApp = functions.https.onRequest(app)
