@@ -22,8 +22,8 @@
     "node": "10.x"
   },
   "scripts": {
-    "start-dev": "npm run build&&nodemon server/index.js",
-    "start": "node server/index.js",
+    "start-dev": "npm run build&&nodemon index.js",
+    "start": "node index.js",
     "heroku-postbuild": "npm install&&npm run build",
     "server": "react-scripts start",
     "build": "react-scripts build",
