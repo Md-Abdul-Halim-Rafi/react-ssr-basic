@@ -3,7 +3,7 @@ import fs from "fs";
 // import serviceAcc from "../service-acc.json"
 import fetch from "isomorphic-fetch";
 // import firebase from "firebase"
-// import functions from "firebase-functions"
+// import { https } from "firebase-functions"
 // import admin from "firebase-admin"
 
 import express from "express";
@@ -32,7 +32,7 @@ import UserPage from "../src/UserPage";
 // const UserPage = require("../src/UserPage");
 
 // admin.initializeApp({ credential: admin.credential.cert(serviceAcc) })
-// firebase.initializeApp({
+// admin.initializeApp({
 //   apiKey: "AIzaSyCYUWy85EYaycc_vooGr29VGu7C9GAYMzk",
 //   authDomain: "cra-mui-async-seo.firebaseapp.com",
 //   databaseURL: "https://cra-mui-async-seo.firebaseio.com",
@@ -118,4 +118,4 @@ app.listen(port, () => {
 });
 
 // export let ssrApp = functions.https.onRequest(app)
-// exports.ssrApp = functions.https.onRequest(app)
+// exports.ssrApp = https.onRequest(app)
